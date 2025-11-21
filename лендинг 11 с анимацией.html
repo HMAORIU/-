@@ -1,0 +1,2800 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ГОТОВО - Создаем готовые решения под ключ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Базовые стили и переменные для тем */
+        :root {
+            /* Синяя тема (по умолчанию) */
+            --primary-color: #0066FF;
+            --secondary-color: #0080FF;
+            --accent-color: #0044CC;
+            --text-color: #FFFFFF;
+            --bg-color: #000017;
+            --section-bg: #0A0A1F;
+            --card-bg: #111827;
+            --border-color: #1F2937;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        /* Зеленая тема (темная) */
+        [data-theme="green"] {
+            --primary-color: #00FE22;
+            --secondary-color: #00FF22;
+            --accent-color: #00A319;
+            --text-color: #FFFFFF;
+            --bg-color: #000017;
+            --section-bg: #0A0A1F;
+            --card-bg: #111827;
+            --border-color: #1F2937;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Оранжевая тема (темная) */
+        [data-theme="orange"] {
+            --primary-color: #FF6B00;
+            --secondary-color: #FF8C00;
+            --accent-color: #CC5500;
+            --text-color: #FFFFFF;
+            --bg-color: #000017;
+            --section-bg: #0A0A1F;
+            --card-bg: #111827;
+            --border-color: #1F2937;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Розовая тема (темная) */
+        [data-theme="pink"] {
+            --primary-color: #FF1493;
+            --secondary-color: #FF69B4;
+            --accent-color: #C71585;
+            --text-color: #FFFFFF;
+            --bg-color: #000017;
+            --section-bg: #0A0A1F;
+            --card-bg: #111827;
+            --border-color: #1F2937;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Светлая синяя тема */
+        [data-theme="light-blue"] {
+            --primary-color: #0066FF;
+            --secondary-color: #0080FF;
+            --accent-color: #0044CC;
+            --text-color: #333333;
+            --bg-color: #FFFFFF;
+            --section-bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --border-color: #E1E5E9;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Светлая зеленая тема */
+        [data-theme="light-green"] {
+            --primary-color: #00A319;
+            --secondary-color: #00CC22;
+            --accent-color: #008814;
+            --text-color: #333333;
+            --bg-color: #FFFFFF;
+            --section-bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --border-color: #E1E5E9;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Светлая оранжевая тема */
+        [data-theme="light-orange"] {
+            --primary-color: #FF6B00;
+            --secondary-color: #FF8C00;
+            --accent-color: #CC5500;
+            --text-color: #333333;
+            --bg-color: #FFFFFF;
+            --section-bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --border-color: #E1E5E9;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Светлая розовая тема */
+        [data-theme="light-pink"] {
+            --primary-color: #FF1493;
+            --secondary-color: #FF69B4;
+            --accent-color: #C71585;
+            --text-color: #333333;
+            --bg-color: #FFFFFF;
+            --section-bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --border-color: #E1E5E9;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: var(--transition);
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            cursor: none;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: bold;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Custom cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+        }
+        
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.6s ease, opacity 0.3s ease;
+            opacity: 0.5;
+        }
+        
+        /* Background Elements */
+        .bg-element {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.1;
+            transition: all 1s ease;
+        }
+        
+        .bg-diamond {
+            width: 978px;
+            height: 978px;
+            background-color: var(--secondary-color);
+            transform: rotate(45deg);
+        }
+        
+        .bg-diamond-1 {
+            top: -400px;
+            right: -300px;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .bg-diamond-2 {
+            bottom: -500px;
+            left: -300px;
+            transform: rotate(-45deg);
+            animation: float 25s infinite ease-in-out reverse;
+        }
+        
+        .bg-small-diamond {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            transform: rotate(45deg);
+            opacity: 0.3;
+            animation: pulse 8s infinite ease-in-out;
+        }
+        
+        .bg-small-1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .bg-small-2 {
+            top: 40%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .bg-small-3 {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        .bg-small-4 {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 6s;
+        }
+        
+        /* Animated grid background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(var(--primary-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--primary-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+        
+        /* Matrix rain effect */
+        .matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.05;
+        }
+        
+        /* Стили для шапки */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            background-color: var(--bg-color);
+            padding: 20px 0;
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        [data-theme^="light"] header {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        header.scrolled {
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .logo:hover .logo-icon {
+            transform: rotate(180deg);
+            border-radius: 50%;
+        }
+        
+        .logo:hover .logo-icon::before {
+            transform: translateX(100%);
+        }
+        
+        .logo-icon svg {
+            transition: transform 0.5s ease;
+        }
+        
+        .logo:hover .logo-icon svg {
+            transform: scale(1.2);
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .logo:hover .logo-text::after {
+            width: 100%;
+        }
+        
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .desktop-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .desktop-nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .desktop-nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        .desktop-nav a:hover:after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 102, 255, 0.3);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Переключатель тем */
+        .theme-switcher {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-color-selector {
+            display: flex;
+            gap: 5px;
+            margin-right: 10px;
+        }
+
+        .theme-color-option {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-color-option::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .theme-color-option:hover::after {
+            opacity: 1;
+        }
+
+        .theme-color-option:hover {
+            transform: scale(1.2);
+        }
+
+        .theme-color-option.active {
+            border-color: var(--text-color);
+            transform: scale(1.2);
+        }
+
+        .theme-color-blue {
+            background: linear-gradient(45deg, #0066FF, #0080FF);
+        }
+
+        .theme-color-green {
+            background: linear-gradient(45deg, #00FE22, #00FF22);
+        }
+
+        .theme-color-orange {
+            background: linear-gradient(45deg, #FF6B00, #FF8C00);
+        }
+
+        .theme-color-pink {
+            background: linear-gradient(45deg, #FF1493, #FF69B4);
+        }
+
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-mode-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, var(--primary-color) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover::before {
+            opacity: 0.1;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: rotate(30deg);
+        }
+        
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .mobile-menu {
+            display: none;
+            background-color: var(--bg-color);
+            box-shadow: var(--shadow);
+            padding: 20px 0;
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        [data-theme^="light"] .mobile-menu {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 10px 0;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mobile-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            opacity: 0.1;
+            transition: left 0.5s ease;
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--primary-color);
+            padding-left: 10px;
+        }
+        
+        .mobile-menu a:hover::before {
+            left: 100%;
+        }
+
+        .mobile-theme-switcher {
+            margin-top: 15px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        /* Стили для секций */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Стили для героя */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            position: relative;
+        }
+        
+        .hero-title .typed-cursor {
+            opacity: 1;
+            animation: blink 1s infinite;
+            color: var(--secondary-color);
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .hero-title span {
+            color: var(--secondary-color);
+            position: relative;
+        }
+        
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: underline 2s ease-in-out infinite;
+        }
+        
+        @keyframes underline {
+            0%, 100% { transform: scaleX(0); }
+            50% { transform: scaleX(1); }
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .primary-button {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .primary-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .primary-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 102, 255, 0.3);
+        }
+        
+        .primary-button:hover::before {
+            left: 100%;
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .secondary-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .secondary-button:hover {
+            color: var(--bg-color);
+        }
+        
+        .secondary-button:hover::before {
+            width: 100%;
+        }
+        
+        .hero-visual {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid var(--border-color);
+            animation: float-card 6s infinite ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--primary-color), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+            opacity: 0.1;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .card-image {
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-image:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.8;
+        }
+        
+        .card-icon {
+            background-color: var(--secondary-color);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            position: relative;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+        
+        .card-icon i {
+            color: var(--bg-color);
+            font-size: 1.8rem;
+        }
+        
+        .card-image-text {
+            color: var(--bg-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .card-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            text-align: center;
+        }
+        
+        /* Particles container */
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Стили для услуг */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--primary-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            z-index: 2;
+        }
+        
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary-color);
+        }
+        
+        .service-card:hover::after {
+            opacity: 0.05;
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            background-color: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            transform: rotate(45deg);
+            transition: transform 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: rotate(135deg);
+        }
+        
+        .service-icon i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            transform: rotate(-45deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-icon i {
+            transform: rotate(-135deg);
+        }
+        
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .service-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .service-link {
+            color: var(--secondary-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .service-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .service-link:hover::after {
+            width: 100%;
+        }
+        
+        .service-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 20px;
+            border-top: 1px solid rgba(0, 102, 255, 0.2);
+            padding-top: 0;
+        }
+        
+        .service-details.active {
+            max-height: 1000px;
+            padding-top: 20px;
+        }
+        
+        .service-details h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .service-details ul {
+            list-style-type: none;
+            margin-bottom: 15px;
+        }
+        
+        .service-details li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .service-details li:before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+        
+        .service-details p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Стили для преимуществ */
+        .advantages {
+            background-color: var(--section-bg);
+            position: relative;
+        }
+        
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .advantage-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+        
+        .advantage-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            background-color: rgba(0, 102, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            transform: rotate(45deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .advantage-card:hover .advantage-icon {
+            transform: rotate(135deg);
+        }
+        
+        .advantage-icon i {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            transform: rotate(-45deg);
+        }
+        
+        .advantage-card:hover .advantage-icon i {
+            transform: rotate(-135deg);
+        }
+        
+        .advantage-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .advantage-description {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        /* Стили для портфолио */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+        
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .portfolio-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .portfolio-image {
+            height: 250px;
+            background-color: var(--border-color);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+        }
+        
+        .portfolio-image:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.8;
+        }
+        
+        .portfolio-image-text {
+            color: var(--bg-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .portfolio-content {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .portfolio-category {
+            display: inline-block;
+            background-color: var(--section-bg);
+            color: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-link {
+            color: var(--secondary-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .portfolio-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .portfolio-link:hover::after {
+            width: 100%;
+        }
+        
+        .portfolio-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        /* Стили для отзывов */
+        .testimonials {
+            background-color: var(--section-bg);
+            position: relative;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            background-color: rgba(0, 102, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            transform: rotate(45deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-card:hover .testimonial-avatar {
+            transform: rotate(135deg);
+        }
+        
+        .testimonial-avatar span {
+            transform: rotate(-45deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-card:hover .testimonial-avatar span {
+            transform: rotate(-135deg);
+        }
+        
+        .testimonial-info h3 {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-info p {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .testimonial-rating {
+            display: flex;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-rating i {
+            color: #fbbf24;
+            margin-right: 3px;
+        }
+        
+        .testimonial-text {
+            color: var(--text-color);
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Стили для брифа */
+        .brief {
+            background-color: var(--section-bg);
+            position: relative;
+        }
+        
+        .brief-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brief-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            color: var(--text-color);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(0, 102, 255, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* Стили для контактов */
+        .contacts {
+            background-color: var(--bg-color);
+            position: relative;
+        }
+        
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        
+        .contact-info {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            margin-right: 15px;
+            margin-top: 5px;
+            flex-shrink: 0;
+            color: var(--primary-color);
+        }
+        
+        .contact-details h4 {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .contact-details p {
+            opacity: 0.9;
+            color: var(--text-color);
+        }
+        
+        .rating-card {
+            background-color: var(--section-bg);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+            color: var(--text-color);
+        }
+        
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .rating-stars i {
+            color: #fbbf24;
+            margin: 0 2px;
+        }
+        
+        .rating-text {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Стили для подвала */
+        footer {
+            background-color: var(--section-bg);
+            color: var(--text-color);
+            padding: 60px 0 30px;
+            position: relative;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--bg-color);
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .social-link:hover::before {
+            left: 100%;
+        }
+        
+        .footer-heading {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--text-color);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            padding-left: 0;
+            transition: padding-left 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            opacity: 1;
+            padding-left: 10px;
+        }
+        
+        .footer-links a::before {
+            content: '›';
+            position: absolute;
+            left: -10px;
+            opacity: 0;
+            transition: opacity 0.3s ease, left 0.3s ease;
+        }
+        
+        .footer-links a:hover::before {
+            opacity: 1;
+            left: 0;
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .footer-contact-icon {
+            margin-right: 10px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            text-align: center;
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom p {
+            margin-bottom: 10px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(45deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(45deg);
+            }
+        }
+        
+        @keyframes float-card {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes gridMove {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+        
+        @keyframes wave {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50px);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .hero-buttons button {
+                width: 100%;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .brief-form {
+                padding: 20px;
+            }
+
+            .theme-color-selector {
+                display: none;
+            }
+            
+            body {
+                cursor: auto;
+            }
+            
+            .cursor, .cursor-follower {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Кастомный курсор -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Анимированный фон -->
+    <div class="grid-bg"></div>
+    <canvas class="matrix-rain" id="matrixRain"></canvas>
+    
+    <!-- Контейнер для частиц -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Шапка -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32">
+                        <path d="M6 16L12 22L26 8" fill="none" stroke="var(--bg-color)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="22" r="2" fill="var(--bg-color)"/>
+                    </svg>
+                </div>
+                <span class="logo-text">ГОТОВО</span>
+            </a>
+            
+            <!-- Навигация для десктопа -->
+            <nav class="desktop-nav">
+                <a href="#services">Услуги</a>
+                <a href="#advantages">Преимущества</a>
+                <a href="#portfolio">Портфолио</a>
+                <a href="#brief">Бриф</a>
+                <a href="#contacts">Контакты</a>
+                
+                <!-- Переключатель тем -->
+                <div class="theme-switcher">
+                    <div class="theme-color-selector">
+                        <div class="theme-color-option theme-color-blue active" data-color="blue"></div>
+                        <div class="theme-color-option theme-color-green" data-color="green"></div>
+                        <div class="theme-color-option theme-color-orange" data-color="orange"></div>
+                        <div class="theme-color-option theme-color-pink" data-color="pink"></div>
+                    </div>
+                    <button class="dark-mode-toggle" id="darkModeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                
+                <button class="cta-button" onclick="scrollToSection('contacts')">Заказать проект</button>
+            </nav>
+            
+            <!-- Кнопка меню для мобильных -->
+            <button class="mobile-menu-button" id="mobileMenuButton">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Мобильное меню -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="container">
+                <a href="#services" onclick="closeMobileMenu()">Услуги</a>
+                <a href="#advantages" onclick="closeMobileMenu()">Преимущества</a>
+                <a href="#portfolio" onclick="closeMobileMenu()">Портфолио</a>
+                <a href="#brief" onclick="closeMobileMenu()">Бриф</a>
+                <a href="#contacts" onclick="closeMobileMenu()">Контакты</a>
+                
+                <!-- Переключатель тем для мобильных -->
+                <div class="mobile-theme-switcher">
+                    <h4>Выбор темы:</h4>
+                    <div style="display: flex; gap: 10px;">
+                        <div class="theme-color-option theme-color-blue active" data-color="blue" onclick="closeMobileMenu()"></div>
+                        <div class="theme-color-option theme-color-green" data-color="green" onclick="closeMobileMenu()"></div>
+                        <div class="theme-color-option theme-color-orange" data-color="orange" onclick="closeMobileMenu()"></div>
+                        <div class="theme-color-option theme-color-pink" data-color="pink" onclick="closeMobileMenu()"></div>
+                    </div>
+                    <button class="dark-mode-toggle" id="mobileDarkModeToggle" style="margin-top: 10px;">
+                        <i class="fas fa-moon"></i> Переключить светлую/темную тему
+                    </button>
+                </div>
+                
+                <button class="cta-button" style="margin-top: 15px; width: 100%;" onclick="closeMobileMenu(); scrollToSection('contacts')">Заказать проект</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Фоновые элементы -->
+    <div class="bg-element bg-diamond bg-diamond-1"></div>
+    <div class="bg-element bg-small-diamond bg-small-1"></div>
+    <div class="bg-element bg-small-diamond bg-small-2"></div>
+
+    <!-- Герой -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title animate-fadeInUp" id="typed-text">Ваш продукт готов <span>за один клик</span></h1>
+                    <p class="hero-description animate-fadeInUp">Создаем веб-сайты, дизайн и 3D-объекты под ключ. Получите готовое решение без лишних согласований и задержек.</p>
+                    <div class="hero-buttons animate-fadeInUp">
+                        <button class="primary-button" onclick="scrollToSection('brief')">Заполнить бриф</button>
+                        <button class="secondary-button" onclick="scrollToSection('portfolio')">Наше портфолио</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card animate-fadeInUp">
+                        <div class="card-image">
+                            <div class="text-center">
+                                <div class="card-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <p class="card-image-text">Анимация готовности</p>
+                            </div>
+                        </div>
+                        <h3 class="card-title">Мгновенный результат</h3>
+                        <p class="card-description">Наша система автоматически генерирует прототип после первого брифа</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services">
+        <div class="bg-element bg-small-diamond bg-small-3"></div>
+        <div class="container">
+            <h2 class="section-title animate-fadeInUp">Наши услуги</h2>
+            <p class="section-subtitle animate-fadeInUp">Создаем готовые решения под ключ для вашего бизнеса</p>
+            
+            <div class="services-grid">
+                <div class="service-card animate-fadeInUp">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="service-title">Веб-разработка</h3>
+                    <p class="service-description">Создаем лендинги, сайты и веб-приложения под ключ с гарантией качества</p>
+                    <a class="service-link toggle-details">Подробнее ↓</a>
+                    
+                    <div class="service-details">
+                        <h4>Что мы предлагаем:</h4>
+                        <ul>
+                            <li>Разработка адаптивных веб-сайтов и лендингов</li>
+                            <li>Создание интернет-магазинов и корпоративных порталов</li>
+                            <li>Интеграция с CRM, платежными системами и API</li>
+                            <li>Оптимизация скорости загрузки и SEO</li>
+                            <li>Техническая поддержка и обновления</li>
+                        </ul>
+                        
+                        <h4>Сроки и стоимость:</h4>
+                        <p>Стандартный лендинг: 7-14 дней от 50 000 ₽<br>
+                        Корпоративный сайт: 3-6 недель от 120 000 ₽<br>
+                        Интернет-магазин: 4-8 недель от 200 000 ₽</p>
+                        
+                        <h4>Технологии:</h4>
+                        <p>HTML5, CSS3, JavaScript, React, Vue.js, Node.js, WordPress, Laravel</p>
+                    </div>
+                </div>
+                
+                <div class="service-card animate-fadeInUp">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="service-title">Графический дизайн</h3>
+                    <p class="service-description">Разрабатываем фирменный стиль, логотипы и упаковку, отражающие суть вашего бренда</p>
+                    <a class="service-link toggle-details">Подробнее ↓</a>
+                    
+                    <div class="service-details">
+                        <h4>Что мы предлагаем:</h4>
+                        <ul>
+                            <li>Разработка логотипа и фирменного стиля</li>
+                            <li>Создание брендбука и гайдлайнов</li>
+                            <li>Дизайн упаковки и этикетки</li>
+                            <li>Разработка полиграфической продукции</li>
+                            <li>Создание инфографики и презентаций</li>
+                        </ul>
+                        
+                        <h4>Сроки и стоимость:</h4>
+                        <p>Логотип: 5-10 дней от 25 000 ₽<br>
+                        Фирменный стиль: 2-4 недели от 70 000 ₽<br>
+                        Дизайн упаковки: 2-3 недели от 40 000 ₽</p>
+                        
+                        <h4>Результат:</h4>
+                        <p>Полный пакет брендинга, включая руководство по использованию, векторные файлы и исходники</p>
+                    </div>
+                </div>
+                
+                <div class="service-card animate-fadeInUp">
+                    <div class="service-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3 class="service-title">3D-печать</h3>
+                    <p class="service-description">Превращаем цифровые модели в физические объекты: прототипы, мерч и интерьерные решения</p>
+                    <a class="service-link toggle-details">Подробнее ↓</a>
+                    
+                    <div class="service-details">
+                        <h4>Что мы предлагаем:</h4>
+                        <ul>
+                            <li>3D-моделирование и проектирование</li>
+                            <li>Печать прототипов и функциональных деталей</li>
+                            <li>Создание сувенирной продукции и мерча</li>
+                            <li>Разработка интерьерных объектов и арт-инсталляций</li>
+                            <li>Постобработка и покраска готовых изделий</li>
+                        </ul>
+                        
+                        <h4>Сроки и стоимость:</h4>
+                        <p>Прототип: 3-7 дней от 5 000 ₽<br>
+                        Серия изделий: 1-2 недели от 15 000 ₽<br>
+                        Комплексное решение: от 2 недель от 50 000 ₽</p>
+                        
+                        <h4>Технологии:</h4>
+                        <p>FDM, SLA, SLS печать, 3D-сканер, SolidWorks, Fusion 360, Blender</p>
+                    </div>
+                </div>
+                
+                <div class="service-card animate-fadeInUp">
+                    <div class="service-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3 class="service-title">Техническая поддержка</h3>
+                    <p class="service-description">Обеспечиваем бесперебойную работу ваших проектов с оперативным решением задач</p>
+                    <a class="service-link toggle-details">Подробнее ↓</a>
+                    
+                    <div class="service-details">
+                        <h4>Что мы предлагаем:</h4>
+                        <ul>
+                            <li>Круглосуточный мониторинг систем</li>
+                            <li>Оперативное устранение неисправностей</li>
+                            <li>Обновление и модернизация ПО</li>
+                            <li>Резервное копирование данных</li>
+                            <li>Консультации и обучение персонала</li>
+                        </ul>
+                        
+                        <h4>Тарифы:</h4>
+                        <p>Базовый: 10 000 ₽/мес (до 10 часов поддержки)<br>
+                        Стандартный: 25 000 ₽/мес (до 40 часов поддержки)<br>
+                        Премиум: 50 000 ₽/мес (неограниченная поддержка)</p>
+                        
+                        <h4>Гарантии:</h4>
+                        <p>Время реакции: до 1 часа в рабочее время<br>
+                        Решение критических проблем: до 4 часов<br>
+                        Ежемесячные отчеты о проделанной работе</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="advantages" id="advantages">
+        <div class="bg-element bg-diamond bg-diamond-2"></div>
+        <div class="bg-element bg-small-diamond bg-small-4"></div>
+        
+        <div class="container">
+            <h2 class="section-title animate-fadeInUp">Почему выбирают нас</h2>
+            <p class="section-subtitle animate-fadeInUp">Работаем на результат, а не на количество этапов</p>
+            
+            <div class="advantages-grid">
+                <div class="advantage-card animate-fadeInUp">
+                    <div class="advantage-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="advantage-title">Скорость</h3>
+                    <p class="advantage-description">Реализуем проекты в сжатые сроки без потери качества</p>
+                </div>
+                
+                <div class="advantage-card animate-fadeInUp">
+                    <div class="advantage-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="advantage-title">Надёжность</h3>
+                    <p class="advantage-description">Предоставляем гарантии на все этапы работы и финальный продукт</p>
+                </div>
+                
+                <div class="advantage-card animate-fadeInUp">
+                    <div class="advantage-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3 class="advantage-title">Полный цикл</h3>
+                    <p class="advantage-description">От идеи до воплощения — вы получаете готовое решение без дополнительных согласований</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Портфолио -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title animate-fadeInUp">Наши проекты</h2>
+            <p class="section-subtitle animate-fadeInUp">Реальные кейсы, готовые к запуску</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-card animate-fadeInUp">
+                    <div class="portfolio-image">
+                        <div class="portfolio-image-text">DTC-бренд косметики</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Веб + 3D</span>
+                        <h3 class="portfolio-title">DTC-бренд косметики</h3>
+                        <p class="portfolio-description">Полный цикл разработки: от концепции до физического воплощения</p>
+                        <a href="#" class="portfolio-link">Посмотреть кейс →</a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card animate-fadeInUp">
+                    <div class="portfolio-image">
+                        <div class="portfolio-image-text">Корпоративный портал</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Веб + Дизайн</span>
+                        <h3 class="portfolio-title">Корпоративный портал</h3>
+                        <p class="portfolio-description">Полный цикл разработки: от концепции до физического воплощения</p>
+                        <a href="#" class="portfolio-link">Посмотреть кейс →</a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card animate-fadeInUp">
+                    <div class="portfolio-image">
+                        <div class="portfolio-image-text">Мерч-коллекция</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">3D-печать + Дизайн</span>
+                        <h3 class="portfolio-title">Мерч-коллекция</h3>
+                        <p class="portfolio-description">Полный цикл разработки: от концепции до физического воплощения</p>
+                        <a href="#" class="portfolio-link">Посмотреть кейс →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-cta animate-fadeInUp">
+                <button class="primary-button" onclick="scrollToSection('brief')">
+                    <span>Получить портфолио</span>
+                    <i class="fas fa-envelope" style="margin-left: 10px;"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title animate-fadeInUp">Отзывы клиентов</h2>
+            <p class="section-subtitle animate-fadeInUp">Что говорят о нас предприниматели и бренды</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-fadeInUp">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"><span>А</span></div>
+                        <div class="testimonial-info">
+                            <h3>Анна К.</h3>
+                            <p>Основатель DTC-бренда</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"ГОТОВО создали для нас не просто сайт, а готовую экосистему: от фирменного стиля до 3D-упаковки. Проект запустился на 2 недели раньше срока!"</p>
+                </div>
+                
+                <div class="testimonial-card animate-fadeInUp">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"><span>Д</span></div>
+                        <div class="testimonial-info">
+                            <h3>Дмитрий П.</h3>
+                            <p>Руководитель IT-стартапа</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Заказывали комплексную разработку под ключ. Получили полностью рабочий продукт с технической поддержкой. Никаких сюрпризов и скрытых этапов — только результат."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Бриф -->
+    <section class="brief" id="brief">
+        <div class="container">
+            <h2 class="section-title animate-fadeInUp">БРИФ</h2>
+            <p class="section-subtitle animate-fadeInUp">Заполните анкету, чтобы мы могли лучше понять ваш проект и предложить оптимальное решение</p>
+            
+            <div class="brief-form animate-fadeInUp">
+                <form id="briefForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Ваше имя *</label>
+                            <input type="text" id="name" placeholder="Иван Петров" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Компания / Проект</label>
+                            <input type="text" id="company" placeholder="Название компании или проекта">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" placeholder="email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" placeholder="+7 (999) 999-99-99">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Какая услуга вас интересует? *</label>
+                        <select id="service" required>
+                            <option value="">Выберите услугу</option>
+                            <option value="web">Веб-разработка</option>
+                            <option value="design">Графический дизайн</option>
+                            <option value="3d">3D-печать</option>
+                            <option value="support">Техническая поддержка</option>
+                            <option value="complex">Комплексное решение</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Бюджет проекта</label>
+                        <select id="budget">
+                            <option value="">Выберите бюджет</option>
+                            <option value="50-100">50 000 - 100 000 ₽</option>
+                            <option value="100-200">100 000 - 200 000 ₽</option>
+                            <option value="200-500">200 000 - 500 000 ₽</option>
+                            <option value="500+">500 000 ₽ и более</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="deadline">Желаемые сроки реализации</label>
+                        <input type="text" id="deadline" placeholder="Например, 2 недели или 1 месяц">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Опишите ваш проект *</label>
+                        <textarea id="description" rows="5" placeholder="Расскажите о целях проекта, целевой аудитории, основных требованиях и пожеланиях..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="references">Примеры работ, которые вам нравятся (ссылки)</label>
+                        <textarea id="references" rows="3" placeholder="Ссылки на сайты, дизайны или проекты, которые вас вдохновляют"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="extra">Дополнительные пожелания или комментарии</label>
+                        <textarea id="extra" rows="3" placeholder="Любая дополнительная информация, которую считаете важной"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="primary-button" style="width: 100%;">Отправить бриф</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <h2 class="section-title animate-fadeInUp">Готовы начать?</h2>
+            <p class="section-subtitle animate-fadeInUp">Оставьте заявку, и мы подготовим коммерческое предложение в течение 24 часов</p>
+            
+            <div class="contacts-grid">
+                <!-- Форма обратной связи -->
+                <div class="contact-form animate-fadeInUp">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contact-name">Ваше имя</label>
+                            <input type="text" id="contact-name" placeholder="Иван Петров" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email" placeholder="email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-project">Описание проекта</label>
+                            <textarea id="contact-project" rows="4" placeholder="Расскажите о вашем проекте..." required></textarea>
+                        </div>
+                        <button type="submit" class="primary-button" style="width: 100%;">Отправить заявку</button>
+                    </form>
+                </div>
+                
+                <!-- Контактная информация -->
+                <div class="contact-info animate-fadeInUp">
+                    <h3>Контакты</h3>
+                    
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Адрес</h4>
+                                <p>Москва, ул. Новаторов, 10</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Телефон</h4>
+                                <p>+7 (495) 123-45-67</p>
+                                <p>Пн-Пт: 10:00 - 19:00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>hello@gotovo.studio</p>
+                                <p>support@gotovo.studio</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="rating-card">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="rating-text">4.9/5 на Яндекс.Маркете</p>
+                        <p>Более 150 успешно завершенных проектов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32">
+                                <path d="M6 16L12 22L26 8" fill="none" stroke="var(--bg-color)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="22" r="2" fill="var(--bg-color)"/>
+                            </svg>
+                        </div>
+                        <span class="footer-logo-text">ГОТОВО</span>
+                    </div>
+                    <p class="footer-description">Создаем готовые решения под ключ для вашего бизнеса с 2020 года</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">TG</a>
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">YT</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Услуги</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Веб-разработка</a></li>
+                        <li><a href="#services">Графический дизайн</a></li>
+                        <li><a href="#services">3D-печать</a></li>
+                        <li><a href="#services">Техподдержка</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Компания</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#portfolio">Портфолио</a></li>
+                        <li><a href="#brief">Бриф</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Контакты</h3>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <span>Москва, ул. Новаторов, 10</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <span>+7 (495) 123-45-67</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <span>hello@gotovo.studio</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 ГОТОВО Studio. Все права защищены. Создано с помощью одного клика.</p>
+                <p>Юридическое название: ООО "ГОТОВО СТУДИО" | ИНН: 7712345678</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Кастомный курсор
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+        
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'scale(0.8)';
+            cursorFollower.style.transform = 'scale(1.2)';
+        });
+        
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'scale(1)';
+            cursorFollower.style.transform = 'scale(1)';
+        });
+        
+        // Интерактивные элементы
+        const interactiveElements = document.querySelectorAll('a, button, .service-card, .portfolio-card, .testimonial-card, .advantage-card');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.5)';
+                cursorFollower.style.transform = 'scale(1.5)';
+                cursorFollower.style.borderColor = getComputedStyle(el).getPropertyValue('--primary-color') || '#0066FF';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursorFollower.style.transform = 'scale(1)';
+                cursorFollower.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color') || '#0066FF';
+            });
+        });
+        
+        // Матричный дождь
+        const matrixCanvas = document.getElementById('matrixRain');
+        const ctx = matrixCanvas.getContext('2d');
+        
+        function resizeMatrixCanvas() {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+        }
+        
+        resizeMatrixCanvas();
+        window.addEventListener('resize', resizeMatrixCanvas);
+        
+        const chars = "01010101010101010101010101010101";
+        const charArray = chars.split("");
+        const rainDrops = [];
+        
+        const fontSize = 14;
+        const columns = matrixCanvas.width / fontSize;
+        
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+        
+        function drawMatrixRain() {
+            ctx.fillStyle = 'rgba(0, 0, 23, 0.05)';
+            ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            
+            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary-color') || '#0066FF';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
+        
+        setInterval(drawMatrixRain, 30);
+        
+        // Система частиц
+        const particlesContainer = document.getElementById('particlesContainer');
+        const particles = [];
+        
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+                this.color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color') || '#0066FF';
+                this.life = 100;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.life--;
+                
+                if (this.size > 0.2) this.size -= 0.1;
+            }
+            
+            draw() {
+                const particleEl = document.createElement('div');
+                particleEl.style.position = 'absolute';
+                particleEl.style.left = this.x + 'px';
+                particleEl.style.top = this.y + 'px';
+                particleEl.style.width = this.size + 'px';
+                particleEl.style.height = this.size + 'px';
+                particleEl.style.backgroundColor = this.color;
+                particleEl.style.borderRadius = '50%';
+                particleEl.style.pointerEvents = 'none';
+                particleEl.style.opacity = this.life / 100;
+                
+                particlesContainer.appendChild(particleEl);
+                
+                setTimeout(() => {
+                    if (particleEl.parentNode) {
+                        particleEl.parentNode.removeChild(particleEl);
+                    }
+                }, 100);
+            }
+        }
+        
+        function createParticles(x, y) {
+            for (let i = 0; i < 10; i++) {
+                particles.push(new Particle(x, y));
+            }
+        }
+        
+        function animateParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                if (particles[i].life <= 0) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+        
+        setInterval(animateParticles, 30);
+        
+        document.addEventListener('click', (e) => {
+            createParticles(e.clientX, e.clientY);
+        });
+        
+        // Тайпинг эффект для заголовка
+        const typedTextSpan = document.getElementById('typed-text');
+        const text = "Ваш продукт готов за один клик";
+        let charIndex = 0;
+        
+        function typeWriter() {
+            if (charIndex < text.length) {
+                typedTextSpan.innerHTML = text.substring(0, charIndex+1) + '<span class="typed-cursor">|</span>';
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            } else {
+                // После завершения печати, добавим мигающий курсор
+                typedTextSpan.innerHTML = text + '<span class="typed-cursor">|</span>';
+            }
+        }
+        
+        // Функция для прокрутки к секции
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // Функция для открытия/закрытия мобильного меню
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            
+            if (mobileMenu.style.display === 'block') {
+                mobileMenu.style.display = 'none';
+                mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            } else {
+                mobileMenu.style.display = 'block';
+                mobileMenuButton.innerHTML = '<i class="fas fa-times"></i>';
+            }
+        }
+        
+        // Функция для закрытия мобильного меню
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            
+            mobileMenu.style.display = 'none';
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+        
+        // Функция для раскрытия/скрытия деталей услуг
+        function toggleServiceDetails(event) {
+            const link = event.target;
+            const details = link.nextElementSibling;
+            const isActive = details.classList.contains('active');
+            
+            // Переключаем только текущий блок
+            if (isActive) {
+                details.classList.remove('active');
+                link.textContent = 'Подробнее ↓';
+            } else {
+                details.classList.add('active');
+                link.textContent = 'Скрыть ↑';
+            }
+        }
+        
+        // Функции для переключения тем
+        let currentColor = 'blue';
+        let isDarkMode = true;
+        
+        function applyTheme() {
+            const themeName = isDarkMode ? currentColor : `light-${currentColor}`;
+            document.documentElement.setAttribute('data-theme', themeName);
+            localStorage.setItem('theme-color', currentColor);
+            localStorage.setItem('theme-mode', isDarkMode ? 'dark' : 'light');
+            
+            // Обновляем активные кнопки цветов
+            document.querySelectorAll('.theme-color-option').forEach(option => {
+                option.classList.remove('active');
+                if (option.getAttribute('data-color') === currentColor) {
+                    option.classList.add('active');
+                }
+            });
+            
+            // Обновляем иконку темной темы
+            updateDarkModeIcon();
+        }
+        
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            applyTheme();
+        }
+        
+        function setColor(color) {
+            currentColor = color;
+            applyTheme();
+        }
+        
+        function updateDarkModeIcon() {
+            const darkModeIcons = document.querySelectorAll('.dark-mode-toggle i');
+            darkModeIcons.forEach(icon => {
+                icon.className = isDarkMode ? 'fas fa-moon' : 'fas fa-sun';
+            });
+        }
+        
+        // Загрузка сохраненной темы при загрузке страницы
+        function loadTheme() {
+            const savedColor = localStorage.getItem('theme-color');
+            const savedMode = localStorage.getItem('theme-mode');
+            if (savedColor) {
+                currentColor = savedColor;
+            }
+            if (savedMode) {
+                isDarkMode = savedMode === 'dark';
+            }
+            applyTheme();
+        }
+        
+        // Обработчик события для кнопки мобильного меню
+        document.getElementById('mobileMenuButton').addEventListener('click', toggleMobileMenu);
+        
+        // Обработчик события для формы контактов
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
+        });
+        
+        // Обработчик события для формы брифа
+        document.getElementById('briefForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за заполнение брифа! Мы проанализируем вашу заявку и свяжемся с вами в ближайшее время.');
+            this.reset();
+        });
+        
+        // Обработчики событий для кнопок "Подробнее" в услугах
+        document.querySelectorAll('.toggle-details').forEach(link => {
+            link.addEventListener('click', toggleServiceDetails);
+        });
+        
+        // Обработчики событий для переключения цветовых тем
+        document.querySelectorAll('.theme-color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const color = this.getAttribute('data-color');
+                setColor(color);
+            });
+        });
+        
+        // Обработчики событий для переключения светлой/темной темы
+        document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+        document.getElementById('mobileDarkModeToggle').addEventListener('click', toggleDarkMode);
+        
+        // Обработчик события для скролла
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Анимация появления элементов при скролле
+            const animatedElements = document.querySelectorAll('.animate-fadeInUp');
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+            
+            // Параллакс эффект для фоновых элементов
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.bg-element');
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px) ${element.style.transform.includes('rotate') ? 'rotate(45deg)' : ''}`;
+            });
+        });
+        
+        // Инициализация анимации при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate-fadeInUp');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            // Запуск анимации для элементов в видимой области
+            setTimeout(() => {
+                window.dispatchEvent(new Event('scroll'));
+            }, 100);
+            
+            // Загрузка сохраненной темы
+            loadTheme();
+            
+            // Запуск тайпинг эффекта
+            setTimeout(typeWriter, 1000);
+        });
+    </script>
+</body>
+</html>
